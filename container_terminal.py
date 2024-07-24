@@ -1,6 +1,11 @@
 import simpy
 class ContainerTerminal:
     def __init__(self, env, logger):
+
+        """
+        Initializes the ContainerTerminal with resources for berths, cranes, and trucks.
+
+        """
         self.env = env
         self.logger = logger
         self.berths = [simpy.Resource(env, capacity=1) for _ in range(2)]  # Berths with capacity 1
@@ -9,6 +14,10 @@ class ContainerTerminal:
         self.waiting_vessels = []
 
     def unload_container(self, vessel_id, berth_index):
+        """
+        Handles the unloading of containers from a vessel at a specific berth.
+
+        """
         with self.cranes.request() as crane_request:
             yield crane_request
             for i in range(150):
@@ -21,6 +30,10 @@ class ContainerTerminal:
                     yield self.env.timeout(6)
 
     def berth_vessel(self, vessel):
+        """
+        Manages the berthing process for a vessel, including finding an available berth and unloading containers.
+
+        """
         # Find available berth
         berth_index = None
         berth_request = None
@@ -61,6 +74,10 @@ class ContainerTerminal:
             self.env.process(self.berth_vessel(next_vessel))
 
     def handle_waiting_vessels(self):
+        """
+        Periodically checks for available berths and assigns waiting vessels to them.
+        
+        """
         while True:
             for i, berth in enumerate(self.berths):
                 if berth.count == 0 and self.waiting_vessels:

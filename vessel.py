@@ -2,6 +2,12 @@ import simpy
 
 class Vessel:
     def __init__(self, env, terminal, logger, id, num_containers=150):
+        """
+        
+        Initializes a vessel with the specified parameters and starts the arrival process.
+
+        """
+
         self.env = env
         self.terminal = terminal
         self.logger = logger
@@ -10,6 +16,12 @@ class Vessel:
         self.env.process(self.arrive())
 
     def arrive(self):
+        """
+
+        Handles the arrival of the vessel, including checking for berth availability and logging the event.
+
+        """
+
         self.logger.vessel_arrives(self.id)
         berth_available = any(berth.count == 0 for berth in self.terminal.berths)
 

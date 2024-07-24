@@ -1,6 +1,10 @@
 
 
 class Log:
+    """
+    The Logger class provides methods for logging events in the container terminal simulation.
+    
+    """
     def __init__(self, env):
         self.env = env
 
