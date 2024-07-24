@@ -20,5 +20,5 @@ def run_simulation(simulation_time):
     env.run(until=simulation_time)
 
 if __name__ == "__main__":
-    SIMULATION_TIME = int(input("give the duration of the simulation time"))
+    SIMULATION_TIME = int(input("Give the duration of the simulation time:"))
     run_simulation(SIMULATION_TIME)

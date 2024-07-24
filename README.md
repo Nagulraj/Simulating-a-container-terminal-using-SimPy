@@ -1,28 +1,52 @@
-# Simulating-a-container-terminal-using-SimPy
+# Simulating a Container Terminal Using SimPy
 
-Container Terminal Simulation
+## Description
 
-Description:
+This Python script simulates the operations of a container terminal using the SimPy library. The simulation models key terminal operations including:
 
-This Python script simulates the operations of a container terminal using the SimPy library. It models the arrival of vessels, their berthing, unloading of containers by cranes, and transportation of containers by trucks.
+- **Vessel Arrivals:** Vessels arrive at the terminal with inter-arrival times that follow an exponential distribution.
+- **Berthing:** Vessels berth at available slots. If no berths are free, vessels wait in a queue.
+- **Unloading:** Quay cranes unload containers from vessels. The cranes operate independently but may be limited by availability.
+- **Transportation:** Trucks transport containers from cranes to the terminal’s yard.
 
-Dependencies:
+## Dependencies
 
-SimPy
-How to Run:
+- **SimPy**: A discrete-event simulation library for Python.
 
-Install the required dependency:
+To install SimPy, run:
 
-Bash
-pip install simpy
+    pip install simpy
 
-Run the main script:
+## How to Run
 
-Bash
-python main.py
+1. **Clone the repository** (if applicable):
 
-Output:
-The script prints log messages to the console, detailing vessel arrivals, berthing, departures, container unloading, and truck transports.
+        git clone <repository_url>
 
-Note:
-This is a basic simulation model.
+2. **Navigate to the project directory**:
+
+        cd <project_directory>
+
+3. **Run the main script**:
+
+        python main.py
+
+## Output
+
+The script will print log messages to the console detailing:
+- Vessel arrivals
+- Berthing assignments
+- Crane operations (unloading containers)
+- Truck transport operations
+
+## Notes
+
+- This is a basic simulation model intended for demonstration purposes. It includes fundamental features such as vessel handling, crane operations, and truck logistics.
+- To modify the simulation parameters (e.g., number of berths, cranes, trucks, or container quantities), edit the `ContainerTerminal` class or relevant sections in the script.
+
+## Files
+
+- **`main.py`**: The main script to run the simulation.
+- **`container_terminal.py`**: Contains the `ContainerTerminal` class.
+- **`vessel.py`**: Contains the `Vessel` class.
+- **`logger.py`**: Provides logging functionality for the simulation.
