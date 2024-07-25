@@ -24,7 +24,6 @@ class Vessel:
 
         self.logger.vessel_arrives(self.id)
         berth_available = any(berth.count == 0 for berth in self.terminal.berths)
-
         if berth_available:
             yield self.env.process(self.terminal.berth_vessel(self))
         else:

@@ -23,7 +23,6 @@ class ContainerTerminal:
             for i in range(150):
                 yield self.env.timeout(3)
                 self.logger.crane_unloads_container(vessel_id, i + 1, berth_index)
-
                 with self.trucks.request() as truck_request:
                     yield truck_request
                     self.logger.truck_transports_container(vessel_id, i + 1)
@@ -54,19 +53,11 @@ class ContainerTerminal:
                     berth_request = req
                     break
 
-
         self.logger.vessel_berths(vessel.id, berth_index)
-
-
         yield self.env.process(self.unload_container(vessel.id, berth_index))
-
-
         self.logger.vessel_departs(vessel.id, berth_index)
-
         if berth_request:
             self.berths[berth_index].release(berth_request)
-
-
         if self.waiting_vessels:
             next_vessel = self.waiting_vessels.pop(0)
             self.env.process(self.berth_vessel(next_vessel))
