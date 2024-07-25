@@ -21,11 +21,11 @@ To install SimPy, run:
 
 1. **Clone the repository** (if applicable):
 
-        git clone <repository_url>
+        git clone https://github.com/Nagulraj/Simulating-a-container-terminal-using-SimPy.git
 
 2. **Navigate to the project directory**:
 
-        cd <project_directory>
+        cd Simulating-a-container-terminal-using-SimPy
 
 3. **Run the main script**:
 
