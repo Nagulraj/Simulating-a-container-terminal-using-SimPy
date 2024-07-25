@@ -31,6 +31,11 @@ To install SimPy, run:
 
         python main.py
 
+3. **Give the time duration for the simulation**:
+
+        Give the duration of the simulation time:<int>
+
+
 ## Output
 
 The script will print log messages to the console detailing:
