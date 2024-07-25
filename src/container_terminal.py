@@ -8,7 +8,7 @@ class ContainerTerminal:
         """
         self.env = env
         self.logger = logger
-        self.berths = [simpy.Resource(env, capacity=1) for _ in range(2)]  # Berths with capacity 1
+        self.berths = [simpy.Resource(env, capacity=1) for _ in range(2)]  
         self.cranes = simpy.Resource(env, capacity=2)
         self.trucks = simpy.Resource(env, capacity=3)
         self.waiting_vessels = []
