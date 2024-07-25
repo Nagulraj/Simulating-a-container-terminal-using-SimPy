@@ -1,8 +1,8 @@
 import simpy
 import random
-from log import Log
-from container_terminal import ContainerTerminal
-from vessel import Vessel
+from src.log import Log
+from src.container_terminal import ContainerTerminal
+from src.vessel import Vessel
 
 def vessel_generator(env, terminal, logger):
     """
