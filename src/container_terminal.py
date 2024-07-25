@@ -34,19 +34,18 @@ class ContainerTerminal:
         Manages the berthing process for a vessel, including finding an available berth and unloading containers.
 
         """
-        # Find available berth
+
         berth_index = None
         berth_request = None
 
         for i, berth in enumerate(self.berths):
-            if berth.count == 0:  # Check if berth is available
+            if berth.count == 0:  
                 berth_index = i
                 berth_request = berth.request()
-                yield berth_request  # Wait for the selected berth
+                yield berth_request  
                 break
 
         if berth_request is None:
-            # If no berth is available, wait until one becomes available
             berth_requests = [berth.request() for berth in self.berths]
             results = yield simpy.AnyOf(self.env, berth_requests)
             for i, req in enumerate(berth_requests):
@@ -55,20 +54,19 @@ class ContainerTerminal:
                     berth_request = req
                     break
 
-        # Log vessel berthing
+
         self.logger.vessel_berths(vessel.id, berth_index)
 
-        # Unload containers
+
         yield self.env.process(self.unload_container(vessel.id, berth_index))
 
-        # Log vessel departure
+
         self.logger.vessel_departs(vessel.id, berth_index)
 
-        # Release the berth
         if berth_request:
             self.berths[berth_index].release(berth_request)
 
-        # Check if there are any waiting vessels and assign them to available berths
+
         if self.waiting_vessels:
             next_vessel = self.waiting_vessels.pop(0)
             self.env.process(self.berth_vessel(next_vessel))
