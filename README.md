@@ -19,7 +19,7 @@ To install SimPy, run:
 
 ## How to Run
 
-1. **Clone the repository** (if applicable):
+1. **Clone the repository**:
 
         git clone https://github.com/Nagulraj/Simulating-a-container-terminal-using-SimPy.git
 
@@ -36,7 +36,7 @@ To install SimPy, run:
 The script will print log messages to the console detailing:
 - Vessel arrivals
 - Berthing assignments
-- Crane operations (unloading containers)
+- unloading containers
 - Truck transport operations
 
 
